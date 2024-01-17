@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: vault-cluster-issuer
+spec:
+  vault:
+    server: https://it-vault.cloudnativeapps.cloud
+    path: pki_int/sign/cloudnativeapps.cloud
+    caBundleSecretRef:
+      name: vault-ca-cert
+    auth:
+      kubernetes:
+        mountPath: /v1/auth/k8s-it-tkg-wld-cls-01
+        role: issuer
+        secretRef:
+          name: vault-cluster-issuer-token
+          key: token

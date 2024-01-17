@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: vault-ingress-tls-cert
+  namespace: vault
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0...
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS...
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRV...

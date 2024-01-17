@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sample-k8s-cert
+  namespace: default
+spec:
+  issuerRef:
+    name: vault-cluster-issuer
+    kind: ClusterIssuer
+  secretName: sample-k8s-cert-tls
+  commonName: sample-k8s-cert.cloudnativeapps.cloud
+  dnsNames:
+  - sample-k8s-cert.cloudnativeapps.cloud

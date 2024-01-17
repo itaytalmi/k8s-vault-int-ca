@@ -1,0 +1,6 @@
+global:
+  externalVaultAddr: https://it-vault.cloudnativeapps.cloud
+server:
+  enabled: false
+  serviceAccount:
+    createSecret: true

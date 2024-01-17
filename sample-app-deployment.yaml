@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: httpbin-api
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin-api
+  namespace: httpbin-api
+  labels:
+    app: httpbin-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin-api
+  template:
+    metadata:
+      labels:
+        app: httpbin-api
+    spec:
+      containers:
+      - image: kennethreitz/httpbin:latest
+        name: httpbin-api
+        ports:
+        - containerPort: 80
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin-api
+  namespace: httpbin-api
+  labels:
+    app: httpbin-api
+    service: httpbin-api
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  selector:
+    app: httpbin-api

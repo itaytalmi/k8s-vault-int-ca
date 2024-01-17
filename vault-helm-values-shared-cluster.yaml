@@ -1,0 +1,12 @@
+server:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.allow-http: "false"
+      ingress.kubernetes.io/force-ssl-redirect: "true"
+    hosts:
+      - host: it-vault.cloudnativeapps.cloud
+    tls:
+      - secretName: vault-ingress-tls-cert
+        hosts:
+          - it-vault.cloudnativeapps.cloud
